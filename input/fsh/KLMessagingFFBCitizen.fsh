@@ -77,6 +77,6 @@ Description: "Guardianship form value set for citizens in FFB messaging"
 CodeSystem: KLMessagingFFBGuardianshipFormCodes
 Id: kl-messaging-ffb-guardianshipFormCodes
 Description: "Guardianship form code system for citizens in FFB messaging"
-* #5
-* #6
-* #7
+* #5 "Personlige og/eller økonomiske forhold, værgemålslovens § 5"
+* #6 "Fratagelse af retlig handleevne, værgemålslovens § 6"
+* #7 "Samværgemål, værgemålslovens § 7"
