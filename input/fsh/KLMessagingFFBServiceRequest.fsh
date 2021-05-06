@@ -9,7 +9,12 @@ Description: "Message for sending an service request from an authority organizat
 * entry MS
 * entry.resource 1.. MS
 
-// KLMessagingOrganization
+Profile: KLMessagingOrganization
+Parent: Organization
+Id: kl-messaging-ffb-messagingOrganization
+Description: "Organization for sending or receiving messages"
+* name 1.. MS
+// TODO addressing ids
 
 Profile: KLMessagingFFBServiceRequestMessageHeader
 Parent: MessageHeader
@@ -21,9 +26,11 @@ Description: "Message header for an FFB service request message"
 * focus only Reference(KLMessagingFFBServiceRequest)
 * focus ^type.aggregation = #bundled
 * source.endpoint MS
-* destination.receiver MS
-* destination.endpoint MS
+* destination.receiver 1.. MS
+* destination.receiver only Reference(KLMessagingOrganization)
+* destination.endpoint 1.. MS
 * sender MS
+* sender only Reference(KLMessagingOrganization)
 
 Profile: KLMessagingFFBServiceRequest
 Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialServiceRequest
@@ -36,6 +43,16 @@ Description: "FFB service request"
 * authoredOn MS 
 * requester 1.. MS
 * requester only Reference(KLMessagingFFBRequester)
+* extension contains KLMessagingFFBSubjectActingMunicipalityExtension named subjectActingMunicipality 1..1 MS
+
+Extension: KLMessagingFFBSubjectActingMunicipalityExtension
+Id: kl-messaging-ffb-subjectActingMunicipality
+Title: "KLMessagingFFBSubjectActingMunicipalityExtension"
+Description: "Municipality acting for the subject in social matters"
+* value[x] 1..1 MS
+* value[x] only Coding
+* value[x] from http://hl7.dk/fhir/core/ValueSet/dk-core-MunicipalityCodes (required)
+
 
 Profile: KLMessagingFFBRequester
 Parent: Organization
@@ -44,8 +61,8 @@ Description: "Organization requesting a service"
 * name MS
 * contact 1.. MS
 * contact.name 1.. MS
-* contact.name.family 1.. MS // TODO mandatory?
-* contact.name.given 1.. MS // TODO mandatory?
+* contact.name.family 1.. MS
+* contact.name.given 1.. MS
 * contact.telecom MS
 * contact.telecom.system 1.. MS
 * contact.telecom.value 1.. MS

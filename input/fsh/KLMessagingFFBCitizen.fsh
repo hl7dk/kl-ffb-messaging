@@ -3,12 +3,6 @@ Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCitizen
 Id: kl-messaging-ffb-citizen
 Title: "KLMessagingFFBCitizen"
 Description: "Citizen for FFB messaging"
-* identifier 1.. MS
-* identifier ^slicing.discriminator[0].type = #value
-* identifier ^slicing.discriminator[0].path = "system"
-* identifier ^slicing.rules = #open
-* identifier contains cpr ..1
-* identifier[cpr] only http://hl7.dk/fhir/core/StructureDefinition/dk-core-cpr-identifier
 * name MS
 * name.family MS
 * name.given MS
@@ -34,16 +28,28 @@ Description: "Citizen for FFB messaging"
 * contact.telecom[phone].system = #phone
 * contact.telecom[email].system = #email
 
-Profile: KLMessaggingFFBGuardian
+Profile: KLMessagingFFBConsent
+Parent: Consent
+Id: kl-messaging-ffb-consent
+Title: "KLMessagingFFBConsent"
+Description: "Consent given for a citizen in FFB Messaging"
+* status MS
+* scope MS
+* category MS
+* patient 1.. MS
+* patient only Reference(KLMessagingFFBCitizen)
+* dateTime 1.. MS
+* performer 1.. MS
+* performer only Reference(KLMessagingFFBRelatedPerson)
+
+Profile: KLMessagingFFBRelatedPerson
 Parent: RelatedPerson
-Id: kl-messaging-ffb-guardian
-Title: "KLMessaggingGuardian"
-Description: "Guardian for citizen in FFB messaging"
+Id: kl-messaging-ffb-relatedPerson
+Title: "KLMessagingFFBRelatedPerson"
+Description: "Related person for a citizen in FFB messaging"
 * patient MS
 * patient only Reference(KLMessagingFFBCitizen)
 * relationship 1..1 MS
-* relationship = $v3-RoleCode#GUARD
-* extension contains KLMessagingFFBGuardianshipFormExtension named guardianshipForm 1..1 MS
 * name MS
 * name.family MS
 * name.given MS
@@ -59,6 +65,23 @@ Description: "Guardian for citizen in FFB messaging"
 * telecom contains phone 1.. MS and email 1.. MS
 * telecom[phone].system = #phone
 * telecom[email].system = #email
+* extension contains KLMessagingRepresentativeRoleExtension named representativeRole 0..1 MS
+
+Extension: KLMessagingRepresentativeRoleExtension
+Id: kl-messaging-ffb-representativeRole
+Title: "KLMessagingRepresentativeRoleExtension"
+Description: "Representative role for a related person in FFB messaging"
+* value[x] 1..1 MS
+* value[x] only Coding
+* value[x] from KLMessagingFFBRepresentativeRoleValues (required)
+
+Profile: KLMessagingFFBGuardian
+Parent: KLMessagingFFBRelatedPerson
+Id: kl-messaging-ffb-guardian
+Title: "KLMessagingGuardian"
+Description: "Guardian for citizen in FFB messaging"
+* relationship = $v3-RoleCode#GUARD
+* extension contains KLMessagingFFBGuardianshipFormExtension named guardianshipForm 1..1 MS
 
 Extension: KLMessagingFFBGuardianshipFormExtension
 Id: kl-messaging-ffb-guardianshipForm
@@ -67,16 +90,3 @@ Description: "Form of guardianship for citizens in FFB messaging"
 * value[x] 1..1 MS
 * value[x] only Coding
 * value[x] from KLMessagingFFBGuardianshipFormValues (required)
-
-ValueSet: KLMessagingFFBGuardianshipFormValues
-Id: kl-messaging-ffb-guardianshipFormValues
-Title: "KLMessaggingFFBGuardianshipForms"
-Description: "Guardianship form value set for citizens in FFB messaging"
-* include codes from system KLMessagingFFBGuardianshipFormCodes
-
-CodeSystem: KLMessagingFFBGuardianshipFormCodes
-Id: kl-messaging-ffb-guardianshipFormCodes
-Description: "Guardianship form code system for citizens in FFB messaging"
-* #5 "Personlige og/eller økonomiske forhold, værgemålslovens § 5"
-* #6 "Fratagelse af retlig handleevne, værgemålslovens § 6"
-* #7 "Samværgemål, værgemålslovens § 7"
