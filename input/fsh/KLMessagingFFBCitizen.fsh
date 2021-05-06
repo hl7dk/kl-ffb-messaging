@@ -49,7 +49,8 @@ Title: "KLMessagingFFBRelatedPerson"
 Description: "Related person for a citizen in FFB messaging"
 * patient MS
 * patient only Reference(KLMessagingFFBCitizen)
-* relationship 1..1 MS
+* relationship 1.. MS
+* relationship from KLMessagingFFBRelationshipTypeValues (extensible)
 * name MS
 * name.family MS
 * name.given MS
@@ -65,15 +66,6 @@ Description: "Related person for a citizen in FFB messaging"
 * telecom contains phone 1.. MS and email 1.. MS
 * telecom[phone].system = #phone
 * telecom[email].system = #email
-* extension contains KLMessagingRepresentativeRoleExtension named representativeRole 0..1 MS
-
-Extension: KLMessagingRepresentativeRoleExtension
-Id: kl-messaging-ffb-representativeRole
-Title: "KLMessagingRepresentativeRoleExtension"
-Description: "Representative role for a related person in FFB messaging"
-* value[x] 1..1 MS
-* value[x] only Coding
-* value[x] from KLMessagingFFBRepresentativeRoleValues (required)
 
 Profile: KLMessagingFFBGuardian
 Parent: KLMessagingFFBRelatedPerson

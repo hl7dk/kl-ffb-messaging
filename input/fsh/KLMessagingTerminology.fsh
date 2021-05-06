@@ -1,14 +1,16 @@
-ValueSet: KLMessagingFFBRepresentativeRoleValues
-Id: kl-messaging-ffb-representativeRoleValues
-Title: "KLMessagingFFBRepresentativeRoleValues"
-Description: "Representative role value set for a related person in FFB messaging"
-* include codes from system KLMessagingFFBRepresentativeRoleCodes
+ValueSet: KLMessagingFFBRelationshipTypeValues
+Id: kl-messaging-ffb-relationshipTypeValues
+Title: "KLMessagingFFBRelationshipTypeValues"
+Description: "Relationship type roles to use in FFB messaging"
+* include $v3-RoleCode#GUARD
+* include $v3-RoleCode#POWATT
+* include codes from system KLMessagingFFBRelationshipTypeCodes
+* include codes from system http://terminology.hl7.org/CodeSystem/v2-0131
 
-CodeSystem: KLMessagingFFBRepresentativeRoleCodes
-Id: kl-messaging-ffb-representativeRoleCodes
-Description: "Representative role code system for a related person in FFB messaging"
+CodeSystem: KLMessagingFFBRelationshipTypeCodes
+Id: kl-messaging-ffb-relationshipTypeCodes
+Description: "Relationship type code system for a related person in FFB messaging"
 * #advocate "Bisidder"
-* #representative "Partsrepræsentant"
 
 ValueSet: KLMessagingFFBGuardianshipFormValues
 Id: kl-messaging-ffb-guardianshipFormValues
