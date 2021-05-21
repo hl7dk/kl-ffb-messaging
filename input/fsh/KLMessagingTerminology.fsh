@@ -1,6 +1,12 @@
+CodeSystem: KLMessagingMessageEventSystem
+Id: kl-messaging-ffb-messageEventSystem
+Title: "MessageEventSystem"
+Description: "Event codes for FFB messages"
+* #ffb-order "order"
+
 ValueSet: KLMessagingFFBRelationshipTypeValues
 Id: kl-messaging-ffb-relationshipTypeValues
-Title: "KLMessagingFFBRelationshipTypeValues"
+Title: "RelationshipTypes"
 Description: "Relationship type roles to use in FFB messaging"
 * include $v3-RoleCode#GUARD
 * include $v3-RoleCode#POWATT
@@ -9,17 +15,19 @@ Description: "Relationship type roles to use in FFB messaging"
 
 CodeSystem: KLMessagingFFBRelationshipTypeCodes
 Id: kl-messaging-ffb-relationshipTypeCodes
+Title: "RelationshipTypeSystem"
 Description: "Relationship type code system for a related person in FFB messaging"
 * #advocate "Bisidder"
 
 ValueSet: KLMessagingFFBGuardianshipFormValues
 Id: kl-messaging-ffb-guardianshipFormValues
-Title: "KLMessaggingFFBGuardianshipForms"
+Title: "GuardianshipForms"
 Description: "Guardianship form value set for citizens in FFB messaging"
 * include codes from system KLMessagingFFBGuardianshipFormCodes
 
 CodeSystem: KLMessagingFFBGuardianshipFormCodes
 Id: kl-messaging-ffb-guardianshipFormCodes
+Title: "GuardianshipFormSystem"
 Description: "Guardianship form code system for citizens in FFB messaging"
 * #5 "Personlige og/eller økonomiske forhold, værgemålslovens § 5"
 * #6 "Fratagelse af retlig handleevne, værgemålslovens § 6"
@@ -27,11 +35,12 @@ Description: "Guardianship form code system for citizens in FFB messaging"
 
 ValueSet: KLMessagingConsentPolicyValues
 Id: kl-messaging-ffb-consentPolicyValues
-Title: "KLMessaggingFFBGuardianshipForms"
+Title: "ConsentPolicies"
 Description: "Consent policy value set for FFB messaging"
 * include codes from system KLMessagingFFBGuardianshipFormCodes
 
 CodeSystem: KLMessagingFFBConsentPolicyCodes
 Id: kl-messaging-ffb-consentPolicyCodes
+Title: "ConsentPolicySystem"
 Description: "Consent policy code system for FFB messaging"
 * #persondataloven "Persondataloven, §6-8"

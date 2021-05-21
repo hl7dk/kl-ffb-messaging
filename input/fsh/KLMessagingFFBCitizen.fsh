@@ -1,7 +1,7 @@
 Profile: KLMessagingFFBCitizen
 Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCitizen
 Id: kl-messaging-ffb-citizen
-Title: "KLMessagingFFBCitizen"
+Title: "Citizen"
 Description: "Citizen for FFB messaging"
 * name MS
 * name.family MS
@@ -24,15 +24,15 @@ Description: "Citizen for FFB messaging"
 * contact.telecom ^slicing.discriminator[0].type = #value
 * contact.telecom ^slicing.discriminator[0].path = "system"
 * contact.telecom ^slicing.rules = #open
-* contact.telecom contains phone 1.. MS and email 1.. MS
+* contact.telecom contains phone 1.. MS and email 0.. MS
 * contact.telecom[phone].system = #phone
 * contact.telecom[email].system = #email
 
 Profile: KLMessagingFFBConsent
 Parent: Consent
 Id: kl-messaging-ffb-consent
-Title: "KLMessagingFFBConsent"
-Description: "Consent given for a citizen in FFB Messaging"
+Title: "Consent"
+Description: "Consent given for a related person in FFB Messaging"
 * status MS
 * scope MS
 * category MS
@@ -45,7 +45,7 @@ Description: "Consent given for a citizen in FFB Messaging"
 Profile: KLMessagingFFBRelatedPerson
 Parent: RelatedPerson
 Id: kl-messaging-ffb-relatedPerson
-Title: "KLMessagingFFBRelatedPerson"
+Title: "RelatedPerson"
 Description: "Related person for a citizen in FFB messaging"
 * patient MS
 * patient only Reference(KLMessagingFFBCitizen)
@@ -63,22 +63,14 @@ Description: "Related person for a citizen in FFB messaging"
 * telecom ^slicing.discriminator[0].type = #value
 * telecom ^slicing.discriminator[0].path = "system"
 * telecom ^slicing.rules = #open
-* telecom contains phone 1.. MS and email 1.. MS
+* telecom contains phone 0.. MS and email 0.. MS
 * telecom[phone].system = #phone
 * telecom[email].system = #email
 
 Profile: KLMessagingFFBGuardian
 Parent: KLMessagingFFBRelatedPerson
 Id: kl-messaging-ffb-guardian
-Title: "KLMessagingGuardian"
+Title: "Guardian"
 Description: "Guardian for citizen in FFB messaging"
 * relationship = $v3-RoleCode#GUARD
 * extension contains KLMessagingFFBGuardianshipFormExtension named guardianshipForm 1..1 MS
-
-Extension: KLMessagingFFBGuardianshipFormExtension
-Id: kl-messaging-ffb-guardianshipForm
-Title: "KLMessagingFFBGuardianshipFormExtension"
-Description: "Form of guardianship for citizens in FFB messaging"
-* value[x] 1..1 MS
-* value[x] only Coding
-* value[x] from KLMessagingFFBGuardianshipFormValues (required)

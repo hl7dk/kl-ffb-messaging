@@ -1,0 +1,57 @@
+@startuml CarePlanOrder
+
+rectangle "OrderMessage" as message
+rectangle "MessageHeader" as messageheader
+rectangle "Organization" as sender
+rectangle "Organization" as receiver
+rectangle "CarePlan" as careplan
+rectangle "InformationGathering" as information
+rectangle "Account" as account
+rectangle "Organization" as author
+rectangle "Citizen" as citizen
+rectangle "CarePlan" as relatedcareplan
+rectangle "CareTeam" as team
+rectangle "RelatedPerson" as relatedperson
+rectangle "Consent" as consent
+rectangle "Intervention" as intervention
+rectangle "FocusCondition" as focuscondition
+rectangle "Encounter" as followup
+rectangle "Intervention" as relatedintervention
+rectangle "CareTeam" as relatedcareteam
+rectangle "Organization" as relatedorganization
+rectangle "Goal" as goal
+rectangle "Evaluation" as evaluation
+rectangle "MatterOfInterest" as theme
+rectangle "Condition" as condition
+rectangle "Organization" as payer
+
+message --> messageheader
+messageheader -->"sender" sender
+messageheader -->"receiver" receiver
+messageheader -->"focus" careplan
+messageheader -->"focus" information
+careplan -->"subject" citizen
+careplan -->"author" author
+careplan -->"addresses *" focuscondition
+careplan -->"goal *" goal
+careplan -->"team" team
+team -->"participant *" relatedperson
+team -->"participant *" relatedorganization
+careplan "basedon"<--"*" intervention
+careplan -->"follow-up" followup
+relatedcareplan -->"team" relatedcareteam
+relatedcareplan "basedon"<--"*" relatedintervention
+relatedcareteam -->"participant " relatedorganization
+relatedperson "performer"<--"*" consent
+careplan -->"partof" relatedcareplan
+information -->"finding *" condition
+information -->"investigation *" theme
+information -->"investigation *" evaluation
+messageheader -->"focus" account
+account -->"owner" payer
+
+goal ->"addresses" condition
+
+condition .[hidden] evaluation
+evaluation .[hidden] theme
+@enduml
