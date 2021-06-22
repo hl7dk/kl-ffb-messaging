@@ -25,8 +25,8 @@ Title: "OrderMessageHeader"
 Description: "Message header for an FFB order message"
 * eventCoding 1.. MS
 * eventCoding = $messageEvent#ffb-order
-* focus 1..1 MS
-* focus only Reference(KLMessagingFFBOrderCarePlan)
+* focus 1.. MS
+* focus only Reference(KLMessagingFFBOrderCarePlan or KLMessagingFFBInformationGathering)
 * focus ^type.aggregation = #bundled
 * source.endpoint MS
 * destination.receiver 1.. MS
@@ -44,28 +44,57 @@ Description: "FFB care plan being ordered"
 * status MS
 * intent MS
 * category MS
+* supportingInfo MS // TODO
+// supportingInfo only Reference(KLMessagingRelatedCarePlan)
 * goal MS
+* goal contains citizenObjective 0..* MS
+* goal[citizenObjective] only Reference(KLMessagingFFBCitizenObjective)
 * goal[fpurpose] only Reference(KLMessagingFFBInterventionPurpose)
 * subject 1.. MS
 * subject only Reference(KLMessagingFFBCitizen)
+* period MS
 * created MS 
 * author 1.. MS
 * author only Reference(KLMessagingFFBRequester)
 * careTeam MS
-* careTeam only Reference(KLMessagingFFBRelatedTeam)
+* careTeam only Reference(KLMessagingFFBServicePerformer)
 * addresses 1.. MS
 * addresses only Reference(KLMessagingFFBTargetGroup)
 
-Profile: KLMessagingFFBRelatedTeam
+Profile: KLMessagingFFBIntervention
+Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialPlannedIntervention
+Id: kl-messaging-ffb-intervention
+Title: "Intervention"
+Description: "Intervention in a ordered care plan"
+* basedOn 1.. MS
+* basedOn only Reference(KLMessagingFFBOrderCarePlan)
+* status MS
+* intent MS
+* subject 1.. MS
+* subject only Reference(KLMessagingFFBCitizen)
+* created MS
+* period MS
+* activity MS
+* activity.detail 1.. MS
+* activity.detail.code 1.. MS
+// * activity.detail.code.coding ^slicing.discriminator[0].type = #value
+// * activity.detail.code.coding ^slicing.discriminator[0].path = "system"
+// * activity.detail.code.coding ^slicing.rules = #open
+* activity.detail.code.coding[FFBintervention] MS
+* activity.detail.code.coding[FFBintervention] from http://kl.dk/fhir/common/caresocial/ValueSet/KLInterventionsFFB
+* activity.detail.status MS
+
+Profile: KLMessagingFFBServicePerformer
 Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonServicePerformer
 Id: kl-messaging-ffb-relatedTeam
-Title: "RelatedTeam"
-Description: "Team of relevant related persons to the citizen"
+Title: "ServicePerformer"
+Description: "ServicePerformer information and relevant related persons"
+* category MS
 * subject 1.. MS
 * subject only Reference(KLMessagingFFBCitizen)
 * participant 1.. MS
 * participant.member MS
-* participant.member only Reference(RelatedPerson or Organization)
+* participant.member only Reference(RelatedPerson)
 
 Profile: KLMessagingFFBRequester
 Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonOrganization

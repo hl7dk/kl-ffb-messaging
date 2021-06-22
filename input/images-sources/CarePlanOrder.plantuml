@@ -25,7 +25,7 @@ rectangle "MatterOfInterest" as theme
 rectangle "Condition" as condition
 rectangle "Organization" as payer
 
-message --> messageheader
+message -- messageheader
 messageheader -->"sender" sender
 messageheader -->"receiver" receiver
 messageheader -->"focus" careplan
@@ -36,14 +36,13 @@ careplan -->"addresses *" focuscondition
 careplan -->"goal *" goal
 careplan -->"team" team
 team -->"participant *" relatedperson
-team -->"participant *" relatedorganization
 careplan "basedon"<--"*" intervention
 careplan -->"follow-up" followup
 relatedcareplan -->"team" relatedcareteam
 relatedcareplan "basedon"<--"*" relatedintervention
 relatedcareteam -->"participant " relatedorganization
 relatedperson "performer"<--"*" consent
-careplan -->"partof" relatedcareplan
+careplan -->"supportingInfo" relatedcareplan
 information -->"finding *" condition
 information -->"investigation *" theme
 information -->"investigation *" evaluation

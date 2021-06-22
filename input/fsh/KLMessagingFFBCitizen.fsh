@@ -13,6 +13,12 @@ Description: "Citizen for FFB messaging"
 * telecom MS
 * telecom.system 1.. MS
 * telecom.value 1.. MS
+* telecom ^slicing.discriminator[0].type = #value
+* telecom ^slicing.discriminator[0].path = "system"
+* telecom ^slicing.rules = #open
+* telecom contains phone 1.. MS and email 0.. MS
+* telecom[phone].system = #phone
+* telecom[email].system = #email
 * contact MS
 * contact.relationship MS
 * contact.name MS
