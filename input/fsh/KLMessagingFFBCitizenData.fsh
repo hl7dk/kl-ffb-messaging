@@ -65,6 +65,18 @@ Description: "Condition according to FFB"
 * subject 1.. MS
 * subject only Reference(KLMessagingFFBCitizen)
 
+Profile: KLMessagingFFBFollowUp
+Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialEncounter
+Id: kl-messaging-ffb-followUp
+Title: "FollowUp"
+Description: "Follow-up encounter for conditions"
+* status MS
+* class MS
+* type 1..1 MS
+* type = $KLCommon#9f03dfbb-7a97-45a5-94db-d4c3501714a9 "opfølgning"
+* period MS
+* period.start MS
+
 Profile: KLMessagingFFBInformationGathering
 Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialInformationGathering
 Id: kl-messaging-ffb-informationGathering
@@ -72,13 +84,25 @@ Title: "InformationGathering"
 Description: "Assessment of the citizen"
 * finding MS
 * finding.itemReference MS
-* finding.itemReference only Reference(KLMessagingFFBCondition)
+* finding.itemReference only Reference(KLMessagingFFBCondition or KLMessagingFFBDiagnosis)
 * investigation MS
 * investigation.item MS
-* investigation.item only Reference(KLMessagingFFBEvaluation)
+* investigation.item only Reference(KLMessagingFFBEvaluation or KLMessagingFFBMatterOfInterest)
 * subject 1.. MS
 * subject only Reference(KLMessagingFFBCitizen)
 
+Profile: KLMessagingFFBDiagnosis
+Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialCondition
+Id: kl-messaging-ffb-disgnosis
+Title: "Diagnosis"
+Description: "A diagnosis of the citizen"
+* clinicalStatus MS
+* code 1.. MS
+* code.coding contains diagnosis 0..1
+* code.coding.system = ""
+* code.text MS
+* subject 1.. MS
+* subject only Reference(KLMessagingFFBCitizen)
 
 Profile: KLMessagingFFBEvaluation
 Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialEvaluation

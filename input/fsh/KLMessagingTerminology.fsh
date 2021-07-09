@@ -44,3 +44,17 @@ Id: kl-messaging-ffb-consentPolicyCodes
 Title: "ConsentPolicySystem"
 Description: "Consent policy code system for FFB messaging"
 * #persondataloven "Persondataloven, §6-8"
+
+ValueSet: KLMessagingFFBParticipantRoleValues
+Id: kl-messaging-ffb-participantRoleValues
+Title: "ParticipantRoles"
+Description: "Participant roles in a care team for FFB Messaging"
+* include codes from system KLMessagingFFBParticipantRoleCodes
+
+CodeSystem: KLMessagingFFBParticipantRoleCodes
+Id: kl-messaging-ffb-participantRoleCodes
+Title: "ParticipantRoleSystem"
+Description: "Participant role code system for FFB messaging"
+* #koordinerende-myndighed "Ansvarlig for koordinering af myndighedssamarbejde"
+* #samarbejdende-myndighed "Samarbejdende myndighed"
+* #koordinerende-udfører "Ansvarlig for koordinering af udførersamarbejde"
