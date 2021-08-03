@@ -24,6 +24,7 @@ rectangle "Evaluation" as evaluation
 rectangle "MatterOfInterest" as theme
 rectangle "Condition" as condition
 rectangle "Organization" as payer
+rectangle "DocumentReference" as attachment
 
 message -- messageheader
 messageheader -->"sender" sender
@@ -48,6 +49,7 @@ information -->"investigation *" theme
 information -->"investigation *" evaluation
 messageheader -->"focus" account
 account -->"owner" payer
+messageheader -->"focus *" attachment
 
 goal ->"addresses" condition
 

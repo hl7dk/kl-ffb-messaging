@@ -32,8 +32,8 @@ Description: "Example of a service request from an authority to a seervice provi
 * entry[=].resource = a4ca3cb0-015d-43e7-81e5-19fde059667b
 * entry[+].fullUrl = "Condition/28f1aa94-a993-4b74-b912-18825daa3367" // Diagnosis
 * entry[=].resource = 28f1aa94-a993-4b74-b912-18825daa3367
-* entry[+].fullUrl = "Observation/bead3181-7188-4a06-8a57-6da8c5d73937" // Professional assessment - Omgivelsesfaktorer
-* entry[=].resource = bead3181-7188-4a06-8a57-6da8c5d73937
+// * entry[+].fullUrl = "Observation/bead3181-7188-4a06-8a57-6da8c5d73937" // Professional assessment - Omgivelsesfaktorer
+// * entry[=].resource = bead3181-7188-4a06-8a57-6da8c5d73937
 * entry[+].fullUrl = "Condition/a2af7c52-e74e-4ca9-8185-09b921aec3b4" // Condition - Indgå i samspil og kontakt  
 * entry[=].resource = a2af7c52-e74e-4ca9-8185-09b921aec3b4
 * entry[+].fullUrl = "Condition/71bb3445-cd03-49ad-81e7-845e5567d490" // Condition - Deltage i sociale fællesskaber og fritidsaktiviteter
@@ -52,8 +52,14 @@ Description: "Example of a service request from an authority to a seervice provi
 * entry[=].resource = db5d4fb0-0b9d-4e92-a415-05c42b5362b6
 * entry[+].fullUrl = "CarePlan/d727dddc-840b-4f5f-a686-626a91058be1" // Beskyttet beskæftigelsesydelse, § 103
 * entry[=].resource = d727dddc-840b-4f5f-a686-626a91058be1
+* entry[+].fullUrl = "Observation/c52f2c0d-eed3-4778-a0f3-aa8f65b188b8" // Evaluation - FFB vurdering af borgers situation
+* entry[=].resource = c52f2c0d-eed3-4778-a0f3-aa8f65b188b8
 * entry[+].fullUrl = "Observation/156149b4-c918-4818-a97a-d81b77d86fba" // Evaluation - Støttebehovsvurdering
 * entry[=].resource = 156149b4-c918-4818-a97a-d81b77d86fba
+* entry[+].fullUrl = "Observation/9977d0a0-bad7-4607-9ea1-39837246d497" // Evaluation - Borgerens ressourcer i forhold til indsatsen
+* entry[=].resource = 9977d0a0-bad7-4607-9ea1-39837246d497
+* entry[+].fullUrl = "Observation/a1febca1-8cb3-4a00-a7f1-deefc9e1391e" // Evaluation - Borgerens perspektiv på indsatsen
+* entry[=].resource = a1febca1-8cb3-4a00-a7f1-deefc9e1391e
 * entry[+].fullUrl = "CarePlan/998af038-b3c1-48ee-abc9-b56ace276335" // Intervention - Længerevarende ophold
 * entry[=].resource = 998af038-b3c1-48ee-abc9-b56ace276335
 * entry[+].fullUrl = "CarePlan/4daf3f6a-810a-478d-9bf9-f7fb85c9335a" // Intervention - Støtte til daglige opgaver i hjemmet
@@ -93,11 +99,11 @@ Instance: da3fe85ebc6147109364d70be0124b18
 InstanceOf: KLMessagingFFBOrderMessageHeader
 Title: "Message Header"
 Usage: #inline
-* focus[+] = Reference(55602964-b665-45bc-ad84-620c42e1761b)
-* focus[+] = Reference(7e54d9df-b563-47f7-a91a-e35c94797090)
-* focus[+] = Reference(9a513f98-f63e-4601-8d85-1086452ef1ae)
-* focus[+] = Reference(26003edb-c0d7-4033-8ac2-62210221b914)
-* focus[+] = Reference(fc6b255b-3336-4b25-85a0-7f31cdf68482)
+* focus[+] = Reference(55602964-b665-45bc-ad84-620c42e1761b) // Care plan
+* focus[+] = Reference(7e54d9df-b563-47f7-a91a-e35c94797090) // Information Gathering
+* focus[+] = Reference(9a513f98-f63e-4601-8d85-1086452ef1ae) // Account
+* focus[+] = Reference(26003edb-c0d7-4033-8ac2-62210221b914) // Attachment description
+* focus[+] = Reference(fc6b255b-3336-4b25-85a0-7f31cdf68482) // Attachment description
 * source.endpoint = "http://xkobing.dk"
 * destination.receiver = Reference(6d109aab-3803-418b-8e5c-b50ea909623f)
 * destination.endpoint = "http://lillested.dk"
@@ -153,7 +159,7 @@ Usage: #inline
 * addresses[=].extension[ConditionRank].valuePositiveInt = 2
 * activity.detail.status = #not-started
 * activity.detail.description = "Første opfølgning på mål er efter 3 mdr."
-* activity.detail.code.coding = $KLCommon#9f03dfbb-7a97-45a5-94db-d4c3501714a9
+// activity.detail.code.coding = $KLCommon#9f03dfbb-7a97-45a5-94db-d4c3501714a9
 * activity.detail.performer = Reference(b524b7d2-3ee2-425e-a640-c5429596e897)
 * activity.detail.scheduledTiming.repeat.frequency = 1
 * activity.detail.scheduledTiming.repeat.period = 1
@@ -366,10 +372,16 @@ Title: "InformationGathering"
 Usage: #inline
 * status = #completed
 * subject = Reference(ef88b48e-e664-41e6-b5b1-2ed4f5c86009)
+* investigation[+].item = Reference(c52f2c0d-eed3-4778-a0f3-aa8f65b188b8)
+* investigation[=].code.coding = $KLCommon#053a301d-1bb8-4cc4-b781-87825ecf0ef8 "FFB vurdering af borgers situation"
 * investigation[+].item = Reference(156149b4-c918-4818-a97a-d81b77d86fba)
 * investigation[=].code.coding = $KLCommon#effe55c7-572c-4a99-8fb4-2a9dda2f6572 "FFB støttebehovsvurdering"
-* investigation[+].item = Reference(bead3181-7188-4a06-8a57-6da8c5d73937)
-* investigation[=].code.coding = $FFB#7445fb2b-0009-43d9-b49b-1b9782f2fcd9 "Omgivelsesfaktorer"
+* investigation[+].item = Reference(9977d0a0-bad7-4607-9ea1-39837246d497)
+* investigation[=].code.coding = $KLCommon#f52887de-023f-4193-b6b0-4b0a37b1cffc "VUM Borgerens ressourcer i forhold til indsatsen"
+* investigation[+].item = Reference(a1febca1-8cb3-4a00-a7f1-deefc9e1391e)
+* investigation[=].code.coding = $KLCommon#3f7a8ca0-afca-4b0d-8773-a99b5f2f8aaf "VUM Borgerens perspektiv på indsatsen"
+// * investigation[+].item = Reference(bead3181-7188-4a06-8a57-6da8c5d73937)
+// * investigation[=].code.coding = $FFB#7445fb2b-0009-43d9-b49b-1b9782f2fcd9 "Omgivelsesfaktorer"
 * finding[+].itemReference = Reference(28f1aa94-a993-4b74-b912-18825daa3367)
 * finding[+].itemReference = Reference(a2af7c52-e74e-4ca9-8185-09b921aec3b4)
 * finding[+].itemReference = Reference(71bb3445-cd03-49ad-81e7-845e5567d490)
@@ -377,15 +389,56 @@ Usage: #inline
 * finding[+].itemReference = Reference(395b861d-8925-4463-b00f-3c74e637518c)
 
 // Evaluation
+Instance: c52f2c0d-eed3-4778-a0f3-aa8f65b188b8
+InstanceOf: KLMessagingFFBEvaluation
+Title: "Vurdering af borgerens situation"
+Usage: #inline
+* status = #final
+* code.coding[klEvaluationCode] = $KLCommon#053a301d-1bb8-4cc4-b781-87825ecf0ef8 "FFB vurdering af borgers situation"
+* effectiveDateTime = 2021-03-15T13:05:37+01:00
+* subject = Reference(ef88b48e-e664-41e6-b5b1-2ed4f5c86009)
+* valueCodeableConcept.text = "Funktioner og forhold
+Christian er som følge af kromosomafvigelsen født med hul i ganen, Dette er han opereret for, men kan stadig opleve problemer med at få maden ned i svælget. 
+Han har tidligere haft en del talevanskeligheder, men kan nu sagtens kommunikere med ord og har et relativt stort ordforråd. 
+Hans immunsystem er svagt og han er let modtagelig for især øreinfektioner. 
+Christian er svært udfordret på en række mentale funktioner som følge af sine diagnoser. Christians udfordringer viser sig især ved, at han har svært ved selv at skabe struktur og genkendelighed, hvilket betyder at han bliver usikker og kan reagere med vrede og afmagt i situationer hvor han ikke støttes heri. 
+Christian har gennem sin opvækst været tilknyttet flere forskellige specialbørnehaver og specialskoler og har boet på flere botilbud siden sit 18. år.
+Omgivelser
+Christians forældre blev skilt da Christian var 7 år og han har ingen kontakt til sin far og har stadig svært ved at forstå, hvorfor faren ikke vil tale med ham. Han har en god relation til sin mor, som har været hans primære omsorgsperson op til det 18. år.
+Aktivitet og Deltagelse
+Christian har svært ved at opbygge en relation til andre, da han har svært ved at forstå de ’’sociale spilleregler’’ og fordi han ikke kan sætte sig i den andens sted, en svært nedsat mentaliseringsevne.  Han har vanskelig ved at opretholde en relation og føler sig ikke hørt og forstået. Han er meget glad for biler og arbejder på et værksted, hvor han hjælper mekanikeren med forfaldent arbejde. Hans mor hjælper ham med økonomien, uden at der er værgeforhold og Christian er god til at styre sine penge, som han siger. Christian bruger piktogrammer til at styre sin hverdag, hvilket gør ham i stand til at klare de fleste ting selv, hvis han har støtte til at planlægge ugen. Christian kan ikke selv lave mad og gøre rent, men kan med guidning hjælpe til og giver udtryk for, at han gerne vil blive bedre."
+
 Instance: 156149b4-c918-4818-a97a-d81b77d86fba
 InstanceOf: KLMessagingFFBEvaluation
 Title: "Støttebehov"
 Usage: #inline
 * status = #final
+* code.coding[klEvaluationCode] = $KLCommon#effe55c7-572c-4a99-8fb4-2a9dda2f6572 "FFB støttebehovsvurdering"
 * effectiveDateTime = 2021-03-15T13:05:37+01:00
 * subject = Reference(ef88b48e-e664-41e6-b5b1-2ed4f5c86009)
 * valueCodeableConcept.coding = $FFB#401a397b-b3aa-4ca3-8b23-bd8f99dd3f76 "Moderat støttebehov"
 * valueCodeableConcept.text = "Christian vurderes at have behov for støtte til at have en indholdsrig hverdag, hvor han dagligt kan blive støttet i at få en god rytme og rutine på de daglige gøremål og hvor han støttes i at opbygge og fastholde relationer til andre. Da hans nedsættelsen af hans mentale funktioner vurderes at være af væsentligt omfang og der er risiko for, at han som følge af især sin kromosomafvigelse vil udvikle følgesygdomme, der kræver yderligere støtte, er det min vurdering at Christian har behov for en indsats, der kan rumme både pædagogisk støtte og pleje på sigt.  Christian vurderes derfor fortsat i målgruppen til et botilbud uden døgndækning."
+
+Instance: 9977d0a0-bad7-4607-9ea1-39837246d497
+InstanceOf: KLMessagingFFBEvaluation
+Title: "Borgerens ressourcer"
+Usage: #inline
+* status = #final
+* code.coding[klEvaluationCode] = $KLCommon#f52887de-023f-4193-b6b0-4b0a37b1cffc "VUM Borgerens ressourcer i forhold til indsatsen"
+* effectiveDateTime = 2021-03-15T13:05:37+01:00
+* subject = Reference(ef88b48e-e664-41e6-b5b1-2ed4f5c86009)
+* valueCodeableConcept.text = "Christian er god til at bruge sine piktogrammer som understøttende for en god rutine. Han vil gerne blive bedre til nogle af de ting, der er særligt udfordrende for ham bl.a. lave mad og gøre rent. Han har gode relationer på værkstedet, hvor han arbejder, hvor han primært taler med mekanikeren."
+
+Instance: a1febca1-8cb3-4a00-a7f1-deefc9e1391e
+InstanceOf: KLMessagingFFBEvaluation
+Title: "Borgerens perspektiv"
+Usage: #inline
+* status = #final
+* code.coding[klEvaluationCode] = $KLCommon#3f7a8ca0-afca-4b0d-8773-a99b5f2f8aaf "VUM Borgerens perspektiv på indsatsen"
+* effectiveDateTime = 2021-03-15T13:05:37+01:00
+* subject = Reference(ef88b48e-e664-41e6-b5b1-2ed4f5c86009)
+* valueCodeableConcept.text = "Christian vil gerne flytte til et nyt sted med andre på sin alder. Han er dog lidt opgivende, idet han ikke synes det rigtige sted er fundet endnu. Det skal helst være et sted, hvor han sammen med andre kan lave nogle ting for eksempel lave mad eller på biludstilling."
+
 
 // Diagnosis
 Instance: 28f1aa94-a993-4b74-b912-18825daa3367 
@@ -397,15 +450,15 @@ Usage: #inline
 * subject = Reference(ef88b48e-e664-41e6-b5b1-2ed4f5c86009)
 
 // Investigations from assessment with simple structure
-Instance: bead3181-7188-4a06-8a57-6da8c5d73937
-InstanceOf: KLMessagingFFBMatterOfInterest
-Title: "Omgivelsesfaktorer"
-Usage: #inline
-* status = #final
-* code.coding = $FFB#7445fb2b-0009-43d9-b49b-1b9782f2fcd9 "Omgivelsesfaktorer"
-* subject = Reference(ef88b48e-e664-41e6-b5b1-2ed4f5c86009)
-* effectiveDateTime = 2021-03-03
-* valueCodeableConcept.text = "Christians forældre blev skilt da Christian var 7 år og han har ingen kontakt til sin far og har stadig svært ved at forstå, hvorfor faren ikke vil tale med ham. Han har en god relation til sin mor, som har været hans primære omsorgsperson op til det 18. år."
+// Instance: bead3181-7188-4a06-8a57-6da8c5d73937
+// InstanceOf: KLMessagingFFBMatterOfInterest
+// Title: "Omgivelsesfaktorer"
+// Usage: #inline
+// * status = #final
+// * code.coding = $FFB#7445fb2b-0009-43d9-b49b-1b9782f2fcd9 "Omgivelsesfaktorer"
+// * subject = Reference(ef88b48e-e664-41e6-b5b1-2ed4f5c86009)
+// * effectiveDateTime = 2021-03-03
+// * valueCodeableConcept.text = "Christians forældre blev skilt da Christian var 7 år og han har ingen kontakt til sin far og har stadig svært ved at forstå, hvorfor faren ikke vil tale med ham. Han har en god relation til sin mor, som har været hans primære omsorgsperson op til det 18. år."
 
 // Conditions related to intervention goal
 Instance: a2af7c52-e74e-4ca9-8185-09b921aec3b4
