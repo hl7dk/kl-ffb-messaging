@@ -177,7 +177,7 @@ Usage: #inline
 
 // Intervention Purpose
 Instance: 76e873e5-7a07-45b7-8247-ab867f3c98a3
-InstanceOf: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialPurpose
+InstanceOf: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialPurpose
 Title: "InterventionPurpose"
 Usage: #inline
 * lifecycleStatus = $goalStatus#accepted
@@ -320,7 +320,7 @@ Usage: #inline
 * subject = Reference(ef88b48e-e664-41e6-b5b1-2ed4f5c86009)
 * created = 2021-03-15T13:05:37+01:00
 * period.start = 2021-04-01
-* activity.detail.code.coding.system = "http://ffb/messaging/kl.dk/1.0/CodeSystem/Text"
+* activity.detail.code.coding.system = "http://fhir.kl.dk/ffbmessaging/CodeSystem/Text"
 * activity.detail.code.text = "Kørsel efter §105"
 * activity.detail.status = #not-started
 
@@ -643,7 +643,7 @@ Instance: 9a513f98-f63e-4601-8d85-1086452ef1ae
 InstanceOf: KLMessagingFFBAccount
 Title: "Account"
 Usage: #inline
-* identifier.value = "4444-88888888"
+* identifier[accountno].value = "4444-88888888"
 * owner = Reference(a7c86933-e198-4692-81f4-76f2bf44c361)
 
 Instance: a7c86933-e198-4692-81f4-76f2bf44c361
