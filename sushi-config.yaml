@@ -5,11 +5,13 @@
 id: kl.dk.fhir.ffbmessaging
 canonical: http://fhir.kl.dk/ffbmessaging
 name: KLFFBMessaging
-status: draft
+title: Please provide a good title
+description: Please provide a good description
+status: active # draft # active
 version: 1.0.0
 fhirVersion: 4.0.1
 copyrightYear: 2021+
-releaseLabel: ci-build
+releaseLabel: release # ci-build # release
 publisher:
   name: KL
   url: http://www.kl.dk
