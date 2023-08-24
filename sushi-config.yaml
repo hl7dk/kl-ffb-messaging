@@ -5,8 +5,8 @@
 id: kl.dk.fhir.ffbmessaging
 canonical: http://fhir.kl.dk/ffbmessaging
 name: KLFFBMessaging
-title: Please provide a good title
-description: Please provide a good description
+title: "Implementation Guide for FFB messaging (FFB udvekslingsdatasæt)"
+description: Danish municipalities implementation guide for FFB messaging. A standard for exchanging social information from citizen journals between municipalities. The aim is to support citizens continuously, e.g. when they move, or receives interventions outside their home municipality.  
 status: active # draft # active
 version: 1.0.0
 fhirVersion: 4.0.1
