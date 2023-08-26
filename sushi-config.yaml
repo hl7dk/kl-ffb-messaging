@@ -2,24 +2,25 @@
 # │  The properties below are used to create the ImplementationGuide resource. For a list of       │
 # │  supported properties, see: https://fshschool.org/sushi/configuration/                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: hl7.fhir.dk.kl.messaging.ffb
-canonical: http://ffb/messaging/kl.dk/1.0
+id: kl.dk.fhir.ffbmessaging
+canonical: http://fhir.kl.dk/ffbmessaging
 name: KLFFBMessaging
-status: draft
-version: 0.1.0
+title: "Implementation Guide for FFB messaging (FFB udvekslingsdatasæt)"
+description: Danish municipalities implementation guide for FFB messaging. A standard for exchanging social information from citizen journals between municipalities. The aim is to support citizens continuously, e.g. when they move, or receives interventions outside their home municipality.  
+status: active # draft # active
+version: 1.0.0
 fhirVersion: 4.0.1
 copyrightYear: 2021+
-releaseLabel: ci-build
+releaseLabel: release # ci-build # release
 publisher:
   name: KL
   url: http://www.kl.dk
 jurisdiction: urn:iso:std:iso:3166#DK "Denmark"
 
 dependencies:
-  hl7.fhir.dk.core:
-    uri: https://hl7.dk/fhir/core
-    version: 1.1.0
-  dk.fhir.ig.kl.common.caresocial: current
+  hl7.fhir.dk.core: 1.1.0
+  kl.dk.fhir.term: 1.0.0
+  kl.dk.fhir.core: 1.2.0
 
 # ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮
 # │  To use a provided input/includes/menu.xml file, delete the "menu" property below.             │

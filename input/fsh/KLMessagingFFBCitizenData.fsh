@@ -1,5 +1,5 @@
 Profile: KLMessagingFFBCitizenObjective
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialGoal
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialGoal
 Id: kl-messaging-ffb-citizenObjective
 Title: "CitizenObjective"
 Description: "The overall objective of the citizen"
@@ -11,7 +11,7 @@ Description: "The overall objective of the citizen"
 * subject only Reference(KLMessagingFFBCitizen)
 
 Profile: KLMessagingFFBInterventionPurpose
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialPurpose
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialPurpose
 Id: kl-messaging-ffb-interventionPurpose
 Title: "InterventionPurpose"
 Description: "Purpose of an intervention for a citizen"
@@ -21,7 +21,7 @@ Description: "Purpose of an intervention for a citizen"
 * subject only Reference(KLMessagingFFBCitizen)
 
 Profile: KLMessagingFFBInterventionGoal
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialFFBGoal
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialFFBGoal
 Id: kl-messaging-ffb-interventionGoal
 Title: "InterventionGoal"
 Description: "Goal related to an intervention for a citizen"
@@ -33,16 +33,16 @@ Description: "Goal related to an intervention for a citizen"
 * target MS
 * target[changeValueSlice] MS
 * target[changeValueSlice].detailCodeableConcept MS
-* target[changeValueSlice].detailCodeableConcept from http://kl.dk/fhir/common/caresocial/ValueSet/KLChangeValueCodesFFB
+* target[changeValueSlice].detailCodeableConcept from http://fhir.kl.dk/term/ValueSet/KLChangeValueCodesFFB
 * target[severitySlice] MS
 * target[severitySlice].detailCodeableConcept MS
-* target[severitySlice].detailCodeableConcept from http://kl.dk/fhir/common/caresocial/ValueSet/KLSeveritiesFFB
+* target[severitySlice].detailCodeableConcept from http://fhir.kl.dk/term/ValueSet/KLSeveritiesFFB
 * addresses MS
 * addresses only Reference(KLMessagingFFBCondition)
 * addresses.extension[ConditionRank] MS
 
 Profile: KLMessagingFFBTargetGroup
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialFocusCondition
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialFocusCondition
 Id: kl-messaging-ffb-targetGroup
 Title: "TargetGroup"
 Description: "Target group of a citizen"
@@ -52,21 +52,21 @@ Description: "Target group of a citizen"
 * subject only Reference(KLMessagingFFBCitizen)
 
 Profile: KLMessagingFFBCondition
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialCondition
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialCondition
 Id: kl-messaging-ffb-condition
 Title: "Condition"
 Description: "Condition according to FFB"
 * clinicalStatus MS
 * severity MS
-* severity from http://kl.dk/fhir/common/caresocial/ValueSet/KLSeveritiesFFB
+* severity from http://fhir.kl.dk/term/ValueSet/KLSeveritiesFFB
 * code 1.. MS
 * code.coding 1..1 MS
-* code.coding from http://kl.dk/fhir/common/caresocial/ValueSet/KLConditionCodesFFB (required)
+* code.coding from http://fhir.kl.dk/term/ValueSet/KLConditionCodesFFB (required)
 * subject 1.. MS
 * subject only Reference(KLMessagingFFBCitizen)
 
 Profile: KLMessagingFFBFollowUp
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialEncounter
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialEncounter
 Id: kl-messaging-ffb-followUp
 Title: "FollowUp"
 Description: "Follow-up encounter for conditions"
@@ -78,7 +78,7 @@ Description: "Follow-up encounter for conditions"
 * period.start MS
 
 Profile: KLMessagingFFBInformationGathering
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialInformationGathering
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialInformationGathering
 Id: kl-messaging-ffb-informationGathering
 Title: "InformationGathering"
 Description: "Assessment of the citizen"
@@ -92,7 +92,7 @@ Description: "Assessment of the citizen"
 * subject only Reference(KLMessagingFFBCitizen)
 
 Profile: KLMessagingFFBDiagnosis
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialCondition
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialCondition
 Id: kl-messaging-ffb-disgnosis
 Title: "Diagnosis"
 Description: "A diagnosis of the citizen"
@@ -105,7 +105,7 @@ Description: "A diagnosis of the citizen"
 * subject only Reference(KLMessagingFFBCitizen)
 
 Profile: KLMessagingFFBEvaluation
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialEvaluation
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialEvaluation
 Id: kl-messaging-ffb-evaluation
 Title: "Evaluation"
 Description: "Vurdering"

@@ -1,5 +1,5 @@
 Profile: KLMessagingFFBOrderCarePlan
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialCarePlan
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialCarePlan
 Id: kl-messaging-ffb-orderCarePlan
 Title: "OrderCarePlan"
 Description: "FFB care plan being ordered"

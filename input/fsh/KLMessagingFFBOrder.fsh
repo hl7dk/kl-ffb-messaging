@@ -36,7 +36,7 @@ Description: "Message header for an FFB order message"
 * sender only Reference(KLMessagingFFBOrganization)
 
 Profile: KLMessagingFFBIntervention
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialPlannedIntervention
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialPlannedIntervention
 Id: kl-messaging-ffb-intervention
 Title: "Intervention"
 Description: "Intervention in a ordered care plan"
@@ -55,11 +55,11 @@ Description: "Intervention in a ordered care plan"
 // * activity.detail.code.coding ^slicing.discriminator[0].path = "system"
 // * activity.detail.code.coding ^slicing.rules = #open
 * activity.detail.code.coding[FFBintervention] MS
-* activity.detail.code.coding[FFBintervention] from http://kl.dk/fhir/common/caresocial/ValueSet/KLInterventionsFFB
+* activity.detail.code.coding[FFBintervention] from http://fhir.kl.dk/term/ValueSet/KLInterventionsFFB
 * activity.detail.status MS
 
 Profile: KLMessagingFFBServicePerformer
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonServicePerformer
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonServicePerformer
 Id: kl-messaging-ffb-servicePerformer
 Title: "ServicePerformer"
 Description: "ServicePerformer information and relevant related persons"

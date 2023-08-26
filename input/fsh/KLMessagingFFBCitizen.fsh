@@ -1,5 +1,5 @@
 Profile: KLMessagingFFBCitizen
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCitizen
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCitizen
 Id: kl-messaging-ffb-citizen
 Title: "Citizen"
 Description: "Citizen for FFB messaging"

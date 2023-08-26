@@ -1,5 +1,5 @@
 Profile: KLMessagingFFBMatterOfInterest
-Parent: http://kl.dk/fhir/common/caresocial/StructureDefinition/KLCommonCareSocialMatterOfInterest
+Parent: http://fhir.kl.dk/core/StructureDefinition/KLCommonCareSocialMatterOfInterest
 Id: kl-messaging-ffb-matterOfInterest
 Title: "MatterOfInterest"
 Description: "Matter of interest for FFB Themes"

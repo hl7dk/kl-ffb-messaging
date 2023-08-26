@@ -1,0 +1,14 @@
+{
+    "package-id" : "kl.dk.fhir.ffbmessaging",
+    "version" : "1.0.0",
+    "path" : "http://fhir.kl.dk/ffbmessaging/1.0.0",
+    "mode" : "milestone",
+    "status" : "release",
+    "sequence" : "Releases",
+    "descmd": "@release-notes.md",
+    "title" : "KLFFBMessaging",
+    "first" : true,
+    "ci-build" : "https://build.fhir.org/ig/hl7dk/kl-ffb-messaging/",
+    "category" : "Messaging",
+    "introduction" : "FFB Messaging makes it possible to communicate social care data between municipalities."
+  }
